@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\v1;
 
+use App\Models\Position;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -16,7 +17,8 @@ class PositionsController extends Controller
      */
     public function index()
     {
-        //
+        $positions = Position::all();
+        return response()->json($positions);
     }
 
     /**

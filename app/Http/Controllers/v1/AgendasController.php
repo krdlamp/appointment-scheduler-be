@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\v1;
 
+use App\Models\Agenda;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -16,7 +17,10 @@ class AgendasController extends Controller
      */
     public function index()
     {
-        //
+        $agendas = Agenda::with(
+            'appointment'
+        )->get();
+        return response()->json($agendas);
     }
 
     /**

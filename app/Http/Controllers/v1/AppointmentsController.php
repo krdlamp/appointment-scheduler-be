@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\v1;
 
+use App\Models\Appointment;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -16,7 +17,12 @@ class AppointmentsController extends Controller
      */
     public function index()
     {
-        //
+        $appointments = Appointment::with(
+            'employees',
+            'departments',
+            'agendas'
+        )->get();
+        return response()->json($appointments);
     }
 
     /**
@@ -37,7 +43,14 @@ class AppointmentsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $appointment = new Appointment();
+        $this->validate($request, [
+            'set_date' => 'required',
+            'start_time' => 'required',
+            'end_time' => 'required',
+            'purpose' => 'required',
+            'status' => 'required',
+        ]);
     }
 
     /**

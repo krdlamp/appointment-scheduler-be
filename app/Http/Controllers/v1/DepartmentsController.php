@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\v1;
 
+use App\Models\Department;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -16,7 +17,8 @@ class DepartmentsController extends Controller
      */
     public function index()
     {
-        //
+        $departments = Department::all();
+        return response()->json($departments);
     }
 
     /**

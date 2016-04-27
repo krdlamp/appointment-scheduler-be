@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\v1;
 
+use App\Models\Level;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -16,7 +17,8 @@ class LevelsController extends Controller
      */
     public function index()
     {
-        //
+        $levels = Level::all();
+        return response()->json($levels);
     }
 
     /**
