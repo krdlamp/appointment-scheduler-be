@@ -22,7 +22,7 @@ class CreateEmployeesTable extends Migration
             $table->integer('department_id')->unsigned();
             $table->integer('level_id')->unsigned();
             $table->integer('position_id')->unsigned();
-            $table->string('password', 60);
+            $table->string('password', 60)->bcrypt()->default(Hash::make('mmfi_scheduler'));
             $table->rememberToken();
             $table->timestamps();
         });
