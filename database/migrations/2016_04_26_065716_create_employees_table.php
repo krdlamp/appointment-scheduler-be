@@ -22,6 +22,8 @@ class CreateEmployeesTable extends Migration
             $table->integer('department_id')->unsigned();
             $table->integer('level_id')->unsigned();
             $table->integer('position_id')->unsigned();
+            $table->string('password', 60);
+            $table->rememberToken();
             $table->timestamps();
         });
     }

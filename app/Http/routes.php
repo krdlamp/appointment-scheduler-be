@@ -11,6 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['prefix' => 'api'], function () {
+    Route::resource('/agendas', 'v1\AgendasController');
+    Route::resource('/employees', 'v1\EmployeesController');
+    Route::resource('/departments', 'v1\DepartmentsController');
+    Route::resource('/positions', 'v1\PositionsController');
+    Route::resource('/levels', 'v1\LevelsController');
+    Route::resource('/appointments', 'v1\AppointmentsController');
+
+    Route::resource('/authenticate', 'v1\AuthenticateController',
+        ['only' => ['index']]);
+    Route::post('/authenticate', 'v1\AuthenticateController@authenticate');
 });
