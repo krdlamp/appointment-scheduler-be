@@ -11,6 +11,10 @@
 |
 */
 
+Route::get('/', function() {
+    return view('index');
+});
+
 Route::group(['prefix' => 'api'], function () {
     Route::resource('/agendas', 'v1\AgendasController');
     Route::resource('/employees', 'v1\EmployeesController');

@@ -15,12 +15,12 @@ class AuthenticateController extends Controller
     /**
      * AuthenticateController constructor.
      */
-    public function __construct()
-    {
-        // Apply the jwt.auth middleware to all methods in this controller
-        // except for the authenticate method.
-        $this->middleware('jwt.auth', ['except' => ['authenticate']]);
-    }
+//    public function __construct()
+//    {
+//        // Apply the jwt.auth middleware to all methods in this controller
+//        // except for the authenticate method.
+//        $this->middleware('jwt.auth', ['except' => ['authenticate']]);
+//    }
 
     /**
      * @param Request $request

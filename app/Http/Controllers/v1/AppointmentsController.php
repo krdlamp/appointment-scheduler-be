@@ -13,12 +13,12 @@ class AppointmentsController extends Controller
     /**
      * AppointmentsController constructor.
      */
-    public function __construct()
-    {
-        // Apply the jwt.auth middleware to all methods in this controller
-        // except for the index and show methods.
-        $this->middleware('jwt.auth', ['except' => ['index', 'show']]);
-    }
+//    public function __construct()
+//    {
+//        // Apply the jwt.auth middleware to all methods in this controller
+//        // except for the index and show methods.
+//        $this->middleware('jwt.auth', ['except' => ['index', 'show']]);
+//    }
     
     /**
      * Display a listing of the resource.
@@ -53,14 +53,39 @@ class AppointmentsController extends Controller
      */
     public function store(Request $request)
     {
-        $appointment = new Appointment();
         $this->validate($request, [
-            'set_date' => 'required',
+            'set_date'   => 'required',
             'start_time' => 'required',
-            'end_time' => 'required',
-            'purpose' => 'required',
-            'status' => 'required',
+            'end_time'   => 'required',
+            'purpose'    => 'required',
+            'status'     => 'required',
+
+            'employees'  => 'required',
+            'agendas'    => 'required',
         ]);
+        
+        $appointment = new Appointment([
+            'set_date'   => $request->input('set_date'),
+            'start_time' => $request->input('start_time'),
+            'end_date'   => $request->input('end_date'),
+            'purpose'    => $request->input('purpose'),
+            'status'     => $request->input('status')
+        ]);
+        
+        $appointment->save();
+        
+        $appointment->employees()->sync($request->input('employees'));
+        $appointment->departments()->sync($request->input('departments'));
+        $appointment->agendas()->sync($request->input('agendas'));
+        $appointment->with(
+            'employees',
+            'departments',
+            'agendas'
+        )->get();
+
+        return response()->json($appointment);
+
+        
     }
 
     /**
