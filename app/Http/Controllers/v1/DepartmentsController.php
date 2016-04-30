@@ -13,12 +13,12 @@ class DepartmentsController extends Controller
     /**
      * AppointmentsController constructor.
      */
-//    public function __construct()
-//    {
-//        // Apply the jwt.auth middleware to all methods in this controller
-//        // except for the index and show methods.
-//        $this->middleware('jwt.auth', ['except' => ['index', 'show']]);
-//    }
+    public function __construct()
+    {
+        // Apply the jwt.auth middleware to all methods in this controller
+        // except for the index and show methods.
+        $this->middleware('jwt.auth', ['except' => ['index', 'show']]);
+    }
     
     /**
      * Display a listing of the resource.
