@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers\v1;
 
+use App\Models\Agenda;
 use App\Models\Appointment;
+use App\Models\Employee;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -67,16 +70,27 @@ class AppointmentsController extends Controller
         $appointment = new Appointment([
             'set_date'   => $request->input('set_date'),
             'start_time' => $request->input('start_time'),
-            'end_date'   => $request->input('end_date'),
+            'end_time'   => $request->input('end_time'),
             'purpose'    => $request->input('purpose'),
             'status'     => $request->input('status')
         ]);
         
         $appointment->save();
-        
-        $appointment->employees()->sync($request->input('employees'));
-        $appointment->departments()->sync($request->input('departments'));
-        $appointment->agendas()->sync($request->input('agendas'));
+
+        $emps = $request->input('employees');
+        foreach ($emps as $emp) {
+            $appointment->employees()->attach(['id' => $emp['id']]);
+            $appointment->departments()->attach(['id' => $emp['id']]);
+        }
+
+
+        $agds = $request->input('agendas');
+        foreach ($agds as $agd) {
+            $appointment->agendas()->create([
+                'description' => $agd['description']
+            ]);
+        }
+
         $appointment->with(
             'employees',
             'departments',
