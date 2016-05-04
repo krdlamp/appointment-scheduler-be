@@ -57,6 +57,7 @@ class AppointmentsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
+            'subject'    => 'required',
             'set_date'   => 'required',
             'start_time' => 'required',
             'end_time'   => 'required',
@@ -68,9 +69,10 @@ class AppointmentsController extends Controller
         ]);
         
         $appointment = new Appointment([
+            'subject'    => $request->input('subject'),
             'set_date'   => $request->input('set_date'),
-            'start_time' => $request->input('start_time'),
-            'end_time'   => $request->input('end_time'),
+            'start_time' => Carbon::createFromFormat('H:m a', $request->input('start_time'), 'UTC'),
+            'end_time'   => Carbon::createFromFormat('H:m a', $request->input('end_time'), 'UTC'),
             'purpose'    => $request->input('purpose'),
             'status'     => $request->input('status')
         ]);

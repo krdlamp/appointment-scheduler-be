@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="276d7ce2-0e9a-4c4a-9422-c56814ffb9df" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/v1/AppointmentsController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/v1/AppointmentsController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Models/Appointment.php" afterPath="$PROJECT_DIR$/app/Models/Appointment.php" />
     </list>
     <ignored path="appointment-scheduler-be.iws" />
@@ -25,31 +25,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="routes.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="19" column="60" selection-start-line="19" selection-start-column="60" selection-end-line="19" selection-end-column="60" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AuthenticateController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="AuthenticateController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/v1/AuthenticateController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
+            <state relative-caret-position="918">
               <caret line="63" column="19" selection-start-line="63" selection-start-column="19" selection-end-line="63" selection-end-column="19" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AppointmentsController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AppointmentsController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/v1/AppointmentsController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="72" column="55" selection-start-line="72" selection-start-column="55" selection-end-line="72" selection-end-column="55" />
+            <state relative-caret-position="414">
+              <caret line="83" column="68" selection-start-line="83" selection-start-column="68" selection-end-line="83" selection-end-column="68" />
               <folding>
                 <element signature="e#43#65#0#PHP" expanded="true" />
               </folding>
@@ -60,8 +50,18 @@
       <file leaf-file-name="Carbon.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/vendor/nesbot/carbon/src/Carbon/Carbon.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="395" column="34" selection-start-line="395" selection-start-column="34" selection-end-line="395" selection-end-column="34" />
+            <state relative-caret-position="-630">
+              <caret line="414" column="82" selection-start-line="414" selection-start-column="82" selection-end-line="414" selection-end-column="82" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="2016_05_04_062417_add_subject_column_to_appointments_table.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/database/migrations/2016_05_04_062417_add_subject_column_to_appointments_table.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="387">
+              <caret line="24" column="26" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -70,8 +70,8 @@
       <file leaf-file-name="Appointment.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Models/Appointment.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
+            <state relative-caret-position="324">
+              <caret line="18" column="29" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -168,6 +168,7 @@
         <option value="$PROJECT_DIR$/public/.htaccess" />
         <option value="$PROJECT_DIR$/app/Models/Employee.php" />
         <option value="$PROJECT_DIR$/database/migrations/2016_04_26_073007_create_appointments_table.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2016_05_04_062417_add_subject_column_to_appointments_table.php" />
         <option value="$PROJECT_DIR$/app/Models/Appointment.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/v1/AppointmentsController.php" />
       </list>
@@ -274,7 +275,7 @@
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="last_opened_file_path" value="$USER_HOME$/repos/senior-high-fe" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="SearchEverywhereHistoryKey" value="Carbon&#9;FILE&#9;file:///home/it-maylyn/mmfi_projects/appointment-scheduler/appointment-scheduler-be/vendor/nesbot/carbon/src/Carbon/Carbon.php&#10;carbo&#9;null&#9;null&#10;appo&#9;FILE&#9;file:///home/it-maylyn/mmfi_projects/appointment-scheduler/appointment-scheduler-be/app/Http/Controllers/v1/AppointmentsController.php&#10;employee&#9;FILE&#9;file:///home/it-maylyn/mmfi_projects/appointment-scheduler/appointment-scheduler-be/app/Models/Employee.php&#10;e&#9;FILE&#9;file:///home/it-maylyn/mmfi_projects/appointment-scheduler/appointment-scheduler-be/app/Http/Controllers/v1/EmployeesController.php&#10;agenda&#9;FILE&#9;file:///home/it-maylyn/mmfi_projects/appointment-scheduler/appointment-scheduler-be/app/Models/Agenda.php&#10;routes&#9;FILE&#9;file:///home/it-maylyn/mmfi_projects/appointment-scheduler/appointment-scheduler-be/app/Http/routes.php&#10;appoint&#9;FILE&#9;file:///home/it-maylyn/mmfi_projects/appointment-scheduler/appointment-scheduler-be/app/Http/Controllers/v1/AppointmentsController.php&#10;jwt&#9;FILE&#9;file:///home/it-maylyn/mmfi_projects/appointment-scheduler/appointment-scheduler-be/config/jwt.php&#10;Empl&#9;FILE&#9;file:///home/it-maylyn/mmfi_projects/appointment-scheduler/appointment-scheduler-be/app/Models/Employee.php&#10;route&#9;FILE&#9;file:///home/it-maylyn/mmfi_projects/appointment-scheduler/appointment-scheduler-be/app/Http/routes.php&#10;Positions&#9;FILE&#9;file:///home/it-maylyn/mmfi_projects/appointment-scheduler/appointment-scheduler-be/database/seeds/PositionsTableSeeder.php&#10;Pos&#9;FILE&#9;file:///home/it-maylyn/mmfi_projects/appointment-scheduler/appointment-scheduler-be/app/Http/Controllers/v1/PositionsController.php&#10;.hta&#9;FILE&#9;file:///home/it-maylyn/mmfi_projects/appointment-scheduler/appointment-scheduler-be/public/.htaccess&#10;satellizer&#9;FILE&#9;file:///home/it-maylyn/mmfi_projects/appointment-scheduler/appointment-scheduler-be/node_modules/satellizer/satellizer.js&#10;Department&#9;null&#9;null&#10;Emplo&#9;null&#9;null&#10;emplo&#9;FILE&#9;file:///home/it-maylyn/mmfi_projects/appointment-scheduler/appointment-scheduler-be/app/Http/Controllers/v1/EmployeesController.php&#10;authen&#9;FILE&#9;file:///home/it-maylyn/mmfi_projects/appointment-scheduler/appointment-scheduler-be/app/Http/Controllers/v1/AuthenticateController.php&#10;inde&#9;FILE&#9;file:///home/it-maylyn/mmfi_projects/appointment-scheduler/appointment-scheduler-be/public/index.php&#10;autoload.p&#9;FILE&#9;file:///home/it-maylyn/mmfi_projects/appointment-scheduler/appointment-scheduler-be/bootstrap/autoload.php&#10;bootstrap&#9;FILE&#9;file:///home/it-maylyn/mmfi_projects/appointment-scheduler/appointment-scheduler-be/node_modules/bootstrap/dist/css/bootstrap-theme.css&#10;auth&#9;FILE&#9;file:///home/it-maylyn/mmfi_projects/appointment-scheduler/appointment-scheduler-be/app/Http/Controllers/v1/AuthenticateController.php&#10;Appo&#9;FILE&#9;file:///home/it-maylyn/mmfi_projects/appointment-scheduler/appointment-scheduler-be/app/Models/Appointment.php&#10;Age&#9;FILE&#9;file:///home/it-maylyn/mmfi_projects/appointment-scheduler/appointment-scheduler-be/app/Models/Agenda.php&#10;auth.php&#9;FILE&#9;file:///home/it-maylyn/mmfi_projects/appointment-scheduler/appointment-scheduler-be/config/auth.php&#10;emp&#9;FILE&#9;file:///home/it-maylyn/mmfi_projects/appointment-scheduler/appointment-scheduler-be/app/Models/Employee.php&#10;jwt.&#9;FILE&#9;file:///home/it-maylyn/mmfi_projects/appointment-scheduler/appointment-scheduler-be/config/jwt.php&#10;Jw&#9;FILE&#9;file:///home/it-maylyn/mmfi_projects/appointment-scheduler/appointment-scheduler-be/vendor/tymon/jwt-auth/src/JWTAuth.php&#10;kerne&#9;FILE&#9;file:///home/it-maylyn/mmfi_projects/appointment-scheduler/appointment-scheduler-be/app/Http/Kernel.php&#10;app&#9;FILE&#9;file:///home/it-maylyn/mmfi_projects/appointment-scheduler/appointment-scheduler-be/config/app.php&#10;Jwt&#9;null&#9;null&#10;ker&#9;null&#9;null&#10;routes.&#9;FILE&#9;file:///home/it-maylyn/mmfi_projects/appointment-scheduler/appointment-scheduler-be/app/Http/routes.php&#10;EM&#9;FILE&#9;file:///home/it-maylyn/mmfi_projects/appointment-scheduler/appointment-scheduler-be/app/Models/Employee.php&#10;Positi&#9;null&#9;null&#10;databases&#9;null&#9;null&#10;app.php&#9;FILE&#9;file:///home/it-maylyn/mmfi_projects/appointment-scheduler/appointment-scheduler-be/config/app.php&#10;composer.j&#9;FILE&#9;file:///home/it-maylyn/mmfi_projects/appointment-scheduler/appointment-scheduler-be/composer.json" />
+    <property name="SearchEverywhereHistoryKey" value="carbo&#9;FILE&#9;file:///home/it-maylyn/mmfi_projects/appointment-scheduler/appointment-scheduler-be/vendor/nesbot/carbon/src/Carbon/Carbon.php&#10;Carbon&#9;FILE&#9;file:///home/it-maylyn/mmfi_projects/appointment-scheduler/appointment-scheduler-be/vendor/nesbot/carbon/src/Carbon/Carbon.php&#10;appo&#9;FILE&#9;file:///home/it-maylyn/mmfi_projects/appointment-scheduler/appointment-scheduler-be/app/Http/Controllers/v1/AppointmentsController.php&#10;employee&#9;FILE&#9;file:///home/it-maylyn/mmfi_projects/appointment-scheduler/appointment-scheduler-be/app/Models/Employee.php&#10;e&#9;FILE&#9;file:///home/it-maylyn/mmfi_projects/appointment-scheduler/appointment-scheduler-be/app/Http/Controllers/v1/EmployeesController.php&#10;agenda&#9;FILE&#9;file:///home/it-maylyn/mmfi_projects/appointment-scheduler/appointment-scheduler-be/app/Models/Agenda.php&#10;routes&#9;FILE&#9;file:///home/it-maylyn/mmfi_projects/appointment-scheduler/appointment-scheduler-be/app/Http/routes.php&#10;appoint&#9;FILE&#9;file:///home/it-maylyn/mmfi_projects/appointment-scheduler/appointment-scheduler-be/app/Http/Controllers/v1/AppointmentsController.php&#10;jwt&#9;FILE&#9;file:///home/it-maylyn/mmfi_projects/appointment-scheduler/appointment-scheduler-be/config/jwt.php&#10;Empl&#9;FILE&#9;file:///home/it-maylyn/mmfi_projects/appointment-scheduler/appointment-scheduler-be/app/Models/Employee.php&#10;route&#9;FILE&#9;file:///home/it-maylyn/mmfi_projects/appointment-scheduler/appointment-scheduler-be/app/Http/routes.php&#10;Positions&#9;FILE&#9;file:///home/it-maylyn/mmfi_projects/appointment-scheduler/appointment-scheduler-be/database/seeds/PositionsTableSeeder.php&#10;Pos&#9;FILE&#9;file:///home/it-maylyn/mmfi_projects/appointment-scheduler/appointment-scheduler-be/app/Http/Controllers/v1/PositionsController.php&#10;.hta&#9;FILE&#9;file:///home/it-maylyn/mmfi_projects/appointment-scheduler/appointment-scheduler-be/public/.htaccess&#10;satellizer&#9;FILE&#9;file:///home/it-maylyn/mmfi_projects/appointment-scheduler/appointment-scheduler-be/node_modules/satellizer/satellizer.js&#10;Department&#9;null&#9;null&#10;Emplo&#9;null&#9;null&#10;emplo&#9;FILE&#9;file:///home/it-maylyn/mmfi_projects/appointment-scheduler/appointment-scheduler-be/app/Http/Controllers/v1/EmployeesController.php&#10;authen&#9;FILE&#9;file:///home/it-maylyn/mmfi_projects/appointment-scheduler/appointment-scheduler-be/app/Http/Controllers/v1/AuthenticateController.php&#10;inde&#9;FILE&#9;file:///home/it-maylyn/mmfi_projects/appointment-scheduler/appointment-scheduler-be/public/index.php&#10;autoload.p&#9;FILE&#9;file:///home/it-maylyn/mmfi_projects/appointment-scheduler/appointment-scheduler-be/bootstrap/autoload.php&#10;bootstrap&#9;FILE&#9;file:///home/it-maylyn/mmfi_projects/appointment-scheduler/appointment-scheduler-be/node_modules/bootstrap/dist/css/bootstrap-theme.css&#10;auth&#9;FILE&#9;file:///home/it-maylyn/mmfi_projects/appointment-scheduler/appointment-scheduler-be/app/Http/Controllers/v1/AuthenticateController.php&#10;Appo&#9;FILE&#9;file:///home/it-maylyn/mmfi_projects/appointment-scheduler/appointment-scheduler-be/app/Models/Appointment.php&#10;Age&#9;FILE&#9;file:///home/it-maylyn/mmfi_projects/appointment-scheduler/appointment-scheduler-be/app/Models/Agenda.php&#10;auth.php&#9;FILE&#9;file:///home/it-maylyn/mmfi_projects/appointment-scheduler/appointment-scheduler-be/config/auth.php&#10;emp&#9;FILE&#9;file:///home/it-maylyn/mmfi_projects/appointment-scheduler/appointment-scheduler-be/app/Models/Employee.php&#10;jwt.&#9;FILE&#9;file:///home/it-maylyn/mmfi_projects/appointment-scheduler/appointment-scheduler-be/config/jwt.php&#10;Jw&#9;FILE&#9;file:///home/it-maylyn/mmfi_projects/appointment-scheduler/appointment-scheduler-be/vendor/tymon/jwt-auth/src/JWTAuth.php&#10;kerne&#9;FILE&#9;file:///home/it-maylyn/mmfi_projects/appointment-scheduler/appointment-scheduler-be/app/Http/Kernel.php&#10;app&#9;FILE&#9;file:///home/it-maylyn/mmfi_projects/appointment-scheduler/appointment-scheduler-be/config/app.php&#10;Jwt&#9;null&#9;null&#10;ker&#9;null&#9;null&#10;routes.&#9;FILE&#9;file:///home/it-maylyn/mmfi_projects/appointment-scheduler/appointment-scheduler-be/app/Http/routes.php&#10;EM&#9;FILE&#9;file:///home/it-maylyn/mmfi_projects/appointment-scheduler/appointment-scheduler-be/app/Models/Employee.php&#10;Positi&#9;null&#9;null&#10;databases&#9;null&#9;null&#10;app.php&#9;FILE&#9;file:///home/it-maylyn/mmfi_projects/appointment-scheduler/appointment-scheduler-be/config/app.php&#10;composer.j&#9;FILE&#9;file:///home/it-maylyn/mmfi_projects/appointment-scheduler/appointment-scheduler-be/composer.json" />
     <property name="js-jscs-nodeInterpreter" value="/usr/bin/node" />
   </component>
   <component name="RecentsManager">
@@ -336,16 +337,16 @@
       <workItem from="1461975632781" duration="17918000" />
       <workItem from="1462147475560" duration="9550000" />
       <workItem from="1462235019953" duration="21267000" />
-      <workItem from="1462320691871" duration="4615000" />
+      <workItem from="1462320691871" duration="8074000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="118163000" />
+    <option name="totallyTimeSpent" value="121622000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1010" extended-state="1" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2828125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -354,7 +355,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2557629" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2557629" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -377,13 +378,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="15" column="37" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2016_04_26_080841_create_appointment_employee_table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -661,30 +655,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/Appointment.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/v1/AuthenticateController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="63" column="19" selection-start-line="63" selection-start-column="19" selection-end-line="63" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2016_04_26_073007_create_appointments_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="16" column="25" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/v1/PositionsController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="468">
@@ -693,21 +663,53 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2016_04_26_073007_create_appointments_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="16" column="25" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/Appointment.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="18" column="29" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2016_05_04_062417_add_subject_column_to_appointments_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="387">
+          <caret line="24" column="26" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/nesbot/carbon/src/Carbon/Carbon.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="395" column="34" selection-start-line="395" selection-start-column="34" selection-end-line="395" selection-end-column="34" />
+        <state relative-caret-position="-630">
+          <caret line="414" column="82" selection-start-line="414" selection-start-column="82" selection-end-line="414" selection-end-column="82" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/v1/AppointmentsController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="72" column="55" selection-start-line="72" selection-start-column="55" selection-end-line="72" selection-end-column="55" />
+        <state relative-caret-position="414">
+          <caret line="83" column="68" selection-start-line="83" selection-start-column="68" selection-end-line="83" selection-end-column="68" />
           <folding>
             <element signature="e#43#65#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/v1/AuthenticateController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="918">
+          <caret line="63" column="19" selection-start-line="63" selection-start-column="19" selection-end-line="63" selection-end-column="19" />
+          <folding />
         </state>
       </provider>
     </entry>
