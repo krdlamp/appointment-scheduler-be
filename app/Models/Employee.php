@@ -43,6 +43,10 @@ class Employee extends Model implements AuthenticatableContract,
         return $this->belongsTo('App\Models\Level');
     }
     
+    public function set_appointments() {
+        return $this->hasMany('App\Models\Appointment');
+    }
+    
     public function appointments() {
         return $this->belongsToMany('App\Models\Appointment');
     }

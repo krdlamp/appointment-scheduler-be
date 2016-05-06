@@ -33,7 +33,8 @@ class AppointmentsController extends Controller
         $appointments = Appointment::with(
             'employees',
             'departments',
-            'agendas'
+            'agendas',
+            'employee'
         )->get();
         return response()->json($appointments);
     }
@@ -63,18 +64,20 @@ class AppointmentsController extends Controller
             'end_time'   => 'required',
             'purpose'    => 'required',
             'status'     => 'required',
+            'set_by'     => 'required',
 
             'employees'  => 'required',
             'agendas'    => 'required',
         ]);
         
         $appointment = new Appointment([
-            'subject'    => $request->input('subject'),
-            'set_date'   => $request->input('set_date'),
-            'start_time' => Carbon::createFromFormat('H:m a', $request->input('start_time'), 'UTC'),
-            'end_time'   => Carbon::createFromFormat('H:m a', $request->input('end_time'), 'UTC'),
-            'purpose'    => $request->input('purpose'),
-            'status'     => $request->input('status')
+            'subject'     => $request->input('subject'),
+            'set_date'    => $request->input('set_date'),
+            'start_time'  => Carbon::createFromFormat('H:m a', $request->input('start_time'), 'UTC'),
+            'end_time'    => Carbon::createFromFormat('H:m a', $request->input('end_time'), 'UTC'),
+            'purpose'     => $request->input('purpose'),
+            'status'      => $request->input('status'),
+            'employee_id' => $request->input('set_by')
         ]);
         
         $appointment->save();
@@ -96,12 +99,11 @@ class AppointmentsController extends Controller
         $appointment->with(
             'employees',
             'departments',
-            'agendas'
+            'agendas',
+            'employee'
         )->get();
 
         return response()->json($appointment);
-
-        
     }
 
     /**
@@ -112,7 +114,13 @@ class AppointmentsController extends Controller
      */
     public function show($id)
     {
-        //
+        $appointment = Appointment::with(
+            'employees',
+            'departments',
+            'agendas'
+        )->findOrFail($id);
+
+        return response()->json($appointment);
     }
 
     /**
@@ -135,7 +143,52 @@ class AppointmentsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $appointment = Appointment::findOrFail($id);
+
+        $this->validate($request, [
+            'subject'    => 'required',
+            'set_date'   => 'required',
+            'start_time' => 'required',
+            'end_time'   => 'required',
+            'purpose'    => 'required',
+            'status'     => 'required',
+            'set_by'     => 'required',
+
+            'employees'  => 'required',
+            'agendas'    => 'required',
+        ]);
+
+        $appointment->subject = $request->input('subject');
+        $appointment->set_date = $request->input('set_date');
+        $appointment->start_time = $request->input('start_time');
+        $appointment->end_time = $request->input('end_time');
+        $appointment->purpose = $request->input('purpose');
+        $appointment->status = $request->input('status');
+        $appointment->employee_id = $request->input('set_by');
+
+        $appointment->save();
+
+        $emps = $request->input('employees');
+        foreach ($emps as $emp) {
+            $appointment->employees()->sync(['id' => $emp['id']]);
+            $appointment->departments()->sync(['id' => $emp['department_id']]);
+        }
+
+        $agds = $request->input('agendas');
+        foreach ($agds as $agd) {
+            $appointment->agendas()->create([
+                'description' => $agd['description']
+            ]);
+        }
+
+        $appointment->with(
+            'employees',
+            'departments',
+            'agendas',
+            'employee'
+        )->get();
+
+        return response()->json($appointment);
     }
 
     /**

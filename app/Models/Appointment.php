@@ -13,10 +13,15 @@ class Appointment extends Model
         'end_time',
         'purpose',
         'status',
+        'employee_id',
     ];
 
     public function employees() {
         return $this->belongsToMany('App\Models\Employee');
+    }
+
+    public function employee() {
+        return $this->belongsTo('App\Models\Employee');
     }
     
     public function departments() {
