@@ -32,7 +32,6 @@ class AppointmentsController extends Controller
     {
         $appointments = Appointment::with(
             'employees',
-            'departments',
             'agendas',
             'employee'
         )->get();
@@ -65,6 +64,7 @@ class AppointmentsController extends Controller
             'purpose'    => 'required',
             'status'     => 'required',
             'set_by'     => 'required',
+            'venue'      => 'required',
 
             'employees'  => 'required',
             'agendas'    => 'required',
@@ -73,11 +73,12 @@ class AppointmentsController extends Controller
         $appointment = new Appointment([
             'subject'     => $request->input('subject'),
             'set_date'    => $request->input('set_date'),
-            'start_time'  => Carbon::createFromFormat('H:m a', $request->input('start_time'), 'UTC'),
-            'end_time'    => Carbon::createFromFormat('H:m a', $request->input('end_time'), 'UTC'),
+            'start_time'  => Carbon::createFromFormat('h:m a', $request->input('start_time'), 'UTC'),
+            'end_time'    => Carbon::createFromFormat('h:m a', $request->input('end_time'), 'UTC'),
             'purpose'     => $request->input('purpose'),
             'status'      => $request->input('status'),
-            'employee_id' => $request->input('set_by')
+            'employee_id' => $request->input('set_by'),
+            'venue'       => $request->input('venue'),
         ]);
         
         $appointment->save();
@@ -85,7 +86,7 @@ class AppointmentsController extends Controller
         $emps = $request->input('employees');
         foreach ($emps as $emp) {
             $appointment->employees()->attach(['id' => $emp['id']]);
-            $appointment->departments()->attach(['id' => $emp['id']]);
+//            $appointment->departments()->attach(['id' => $emp['id']]);
         }
 
 
@@ -98,7 +99,6 @@ class AppointmentsController extends Controller
 
         $appointment->with(
             'employees',
-            'departments',
             'agendas',
             'employee'
         )->get();
@@ -116,8 +116,8 @@ class AppointmentsController extends Controller
     {
         $appointment = Appointment::with(
             'employees',
-            'departments',
-            'agendas'
+            'agendas',
+            'employee'
         )->findOrFail($id);
 
         return response()->json($appointment);
@@ -153,6 +153,7 @@ class AppointmentsController extends Controller
             'purpose'    => 'required',
             'status'     => 'required',
             'set_by'     => 'required',
+            'venue'      => 'required',
 
             'employees'  => 'required',
             'agendas'    => 'required',
@@ -165,13 +166,20 @@ class AppointmentsController extends Controller
         $appointment->purpose = $request->input('purpose');
         $appointment->status = $request->input('status');
         $appointment->employee_id = $request->input('set_by');
+        $appointment->venue = $request->input('venue');
 
         $appointment->save();
 
         $emps = $request->input('employees');
         foreach ($emps as $emp) {
             $appointment->employees()->sync(['id' => $emp['id']]);
-            $appointment->departments()->sync(['id' => $emp['department_id']]);
+//            $appointment->departments()->sync(['id' => $emp['department_id']]);
+        }
+
+        $agendas = $appointment->agendas;
+        foreach ($agendas as $agenda) {
+            $agenda = Agenda::findOrFail($agenda->id);
+            $agenda->delete();
         }
 
         $agds = $request->input('agendas');
@@ -183,7 +191,6 @@ class AppointmentsController extends Controller
 
         $appointment->with(
             'employees',
-            'departments',
             'agendas',
             'employee'
         )->get();
