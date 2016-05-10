@@ -17,7 +17,8 @@ class EmployeesController extends Controller
     {
         // Apply the jwt.auth middleware to all methods in this controller
         // except for the index and show methods.
-        $this->middleware('jwt.auth', ['except' => ['index', 'show']]);
+//        $this->middleware('jwt.auth', ['except' => ['index', 'show']]);
+        $this->middleware('jwt.auth');
     }
     
     /**

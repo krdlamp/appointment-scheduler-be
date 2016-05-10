@@ -20,7 +20,8 @@ class AppointmentsController extends Controller
     {
         // Apply the jwt.auth middleware to all methods in this controller
         // except for the index and show methods.
-        $this->middleware('jwt.auth', ['except' => ['index', 'show']]);
+//        $this->middleware('jwt.auth', ['except' => ['index', 'show']]);
+        $this->middleware('jwt.auth');
     }
     
     /**
@@ -86,7 +87,6 @@ class AppointmentsController extends Controller
         $emps = $request->input('employees');
         foreach ($emps as $emp) {
             $appointment->employees()->attach(['id' => $emp['id']]);
-//            $appointment->departments()->attach(['id' => $emp['id']]);
         }
 
 
@@ -194,6 +194,20 @@ class AppointmentsController extends Controller
             'agendas',
             'employee'
         )->get();
+
+        return response()->json($appointment);
+    }
+
+    public function confirmAttendance(Request $request, $appointmentId)
+    {
+        $appointment = Appointment::findOrFail($appointmentId);
+
+        $this->validate($request, [
+            'employee_id' => 'required',
+            'status'      => 'required',
+        ]);
+
+        $appointment->employees()->sync(['id' => $request->input('employee_id'), 'status' => $request->input('status')]);
 
         return response()->json($appointment);
     }

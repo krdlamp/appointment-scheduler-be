@@ -21,6 +21,9 @@ Route::group(['prefix' => 'api'], function () {
     Route::resource('/departments', 'v1\DepartmentsController');
     Route::resource('/positions', 'v1\PositionsController');
     Route::resource('/levels', 'v1\LevelsController');
+
+    Route::post('/appointments/{id}/confirm-attendance', 'v1\AppointmentsController@confirmAttendance');
+
     Route::resource('/appointments', 'v1\AppointmentsController');
 
     Route::resource('/authenticate', 'v1\AuthenticateController',
