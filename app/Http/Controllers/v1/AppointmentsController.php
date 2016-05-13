@@ -23,7 +23,7 @@ class AppointmentsController extends Controller
 //        $this->middleware('jwt.auth', ['except' => ['index', 'show']]);
         $this->middleware('jwt.auth');
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -70,7 +70,7 @@ class AppointmentsController extends Controller
             'employees'  => 'required',
             'agendas'    => 'required',
         ]);
-        
+
         $appointment = new Appointment([
             'subject'     => $request->input('subject'),
             'set_date'    => $request->input('set_date'),
@@ -81,14 +81,13 @@ class AppointmentsController extends Controller
             'employee_id' => $request->input('set_by'),
             'venue'       => $request->input('venue'),
         ]);
-        
+
         $appointment->save();
 
         $emps = $request->input('employees');
         foreach ($emps as $emp) {
             $appointment->employees()->attach(['id' => $emp['id']]);
         }
-
 
         $agds = $request->input('agendas');
         foreach ($agds as $agd) {
@@ -99,6 +98,7 @@ class AppointmentsController extends Controller
 
         $appointment->with(
             'employees',
+            'departments',
             'agendas',
             'employee'
         )->get();
@@ -116,6 +116,7 @@ class AppointmentsController extends Controller
     {
         $appointment = Appointment::with(
             'employees',
+            'departments',
             'agendas',
             'employee'
         )->findOrFail($id);
@@ -159,21 +160,20 @@ class AppointmentsController extends Controller
             'agendas'    => 'required',
         ]);
 
-        $appointment->subject = $request->input('subject');
-        $appointment->set_date = $request->input('set_date');
-        $appointment->start_time = $request->input('start_time');
-        $appointment->end_time = $request->input('end_time');
-        $appointment->purpose = $request->input('purpose');
-        $appointment->status = $request->input('status');
+        $appointment->subject     = $request->input('subject');
+        $appointment->set_date    = $request->input('set_date');
+        $appointment->start_time  = $request->input('start_time');
+        $appointment->end_time    = $request->input('end_time');
+        $appointment->purpose     = $request->input('purpose');
+        $appointment->status      = $request->input('status');
         $appointment->employee_id = $request->input('set_by');
-        $appointment->venue = $request->input('venue');
+        $appointment->venue       = $request->input('venue');
 
         $appointment->save();
 
         $emps = $request->input('employees');
         foreach ($emps as $emp) {
-            $appointment->employees()->sync(['id' => $emp['id']]);
-//            $appointment->departments()->sync(['id' => $emp['department_id']]);
+            $appointment->employees()->sync(['id' => $emp['id'], 'appointment_id' => $id]);
         }
 
         $agendas = $appointment->agendas;
@@ -191,23 +191,10 @@ class AppointmentsController extends Controller
 
         $appointment->with(
             'employees',
+            'departments',
             'agendas',
             'employee'
         )->get();
-
-        return response()->json($appointment);
-    }
-
-    public function confirmAttendance(Request $request, $appointmentId)
-    {
-        $appointment = Appointment::findOrFail($appointmentId);
-
-        $this->validate($request, [
-            'employee_id' => 'required',
-            'status'      => 'required',
-        ]);
-
-        $appointment->employees()->sync(['id' => $request->input('employee_id'), 'status' => $request->input('status')]);
 
         return response()->json($appointment);
     }
