@@ -18,17 +18,17 @@ class Appointment extends Model
     ];
 
     public function employees() {
-        return $this->belongsToMany('App\Models\Employee');
+        return $this->belongsToMany('App\Models\Employee')->withPivot('status');
     }
 
     public function employee() {
         return $this->belongsTo('App\Models\Employee');
     }
-    
+
     public function departments() {
         return $this->belongsToMany('App\Models\Department');
     }
-    
+
     public function agendas() {
         return $this->hasMany('App\Models\Agenda');
     }

@@ -33,6 +33,7 @@ class AppointmentsController extends Controller
     {
         $appointments = Appointment::with(
             'employees',
+            'departments',
             'agendas',
             'employee'
         )->get();
@@ -87,6 +88,7 @@ class AppointmentsController extends Controller
         $emps = $request->input('employees');
         foreach ($emps as $emp) {
             $appointment->employees()->attach(['id' => $emp['id']]);
+            $appointment->departments()->attach(['id' => $emp['department_id']]);
         }
 
         $agds = $request->input('agendas');
@@ -171,10 +173,19 @@ class AppointmentsController extends Controller
 
         $appointment->save();
 
+        $employees = [];
+        $departments = [];
+
         $emps = $request->input('employees');
-        foreach ($emps as $emp) {
-            $appointment->employees()->sync(['id' => $emp['id'], 'appointment_id' => $id]);
+        if ($emps) {
+          // foreach ($emps as $emp) {
+              $employees = array_pluck($emps, 'id');
+              $departments = array_pluck($emps, 'department_id');
+          // }
         }
+
+        $appointment->employees()->sync($employees);
+        $appointment->departments()->sync($departments);
 
         $agendas = $appointment->agendas;
         foreach ($agendas as $agenda) {

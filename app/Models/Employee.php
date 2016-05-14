@@ -15,7 +15,7 @@ class Employee extends Model implements AuthenticatableContract,
                                         CanResetPasswordContract
 {
     use Authenticatable, Authorizable, CanResetPassword;
-    
+
     protected $table = 'employees';
 
     protected $fillable = [
@@ -34,20 +34,20 @@ class Employee extends Model implements AuthenticatableContract,
     public function department() {
         return $this->belongsTo('App\Models\Department');
     }
-    
+
     public function position() {
         return $this->belongsTo('App\Models\Position');
     }
-    
+
     public function level() {
         return $this->belongsTo('App\Models\Level');
     }
-    
+
     public function set_appointments() {
         return $this->hasMany('App\Models\Appointment');
     }
-    
+
     public function appointments() {
-        return $this->belongsToMany('App\Models\Appointment');
+        return $this->belongsToMany('App\Models\Appointment')->withPivot('status');
     }
 }

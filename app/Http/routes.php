@@ -24,6 +24,7 @@ Route::group(['prefix' => 'api'], function () {
 
     Route::resource('/appointments', 'v1\AppointmentsController');
     Route::resource('/appointment-status', 'v1\AppointmentStatusController');
+    Route::resource('/personnel-appointments', 'v1\PersonnelAppointmentsController');
 
     Route::resource('/authenticate', 'v1\AuthenticateController',
         ['only' => ['index']]);

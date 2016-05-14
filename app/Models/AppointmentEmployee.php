@@ -13,4 +13,8 @@ class AppointmentEmployee extends Model
         'employee_id',
         'status'
     ];
+
+    public function appointments() {
+      return $this->hasMany('App\Models\Appointments');
+    }
 }

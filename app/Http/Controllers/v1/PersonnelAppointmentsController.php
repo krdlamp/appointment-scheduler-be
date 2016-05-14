@@ -2,16 +2,15 @@
 
 namespace App\Http\Controllers\v1;
 
-use App\Models\Appointment;
-use App\Models\AppointmentEmployee;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Models\AppointmentEmployee;
+use App\Models\Employee;
 
-class AppointmentStatusController extends Controller
+class PersonnelAppointmentsController extends Controller
 {
-
     public function __construct()
     {
         // Apply the jwt.auth middleware to all methods in this controller
@@ -27,9 +26,7 @@ class AppointmentStatusController extends Controller
      */
     public function index()
     {
-       $appointmentStats = AppointmentEmployee::all();
 
-       return response()->json($appointmentStats);
     }
 
     /**
@@ -61,7 +58,10 @@ class AppointmentStatusController extends Controller
      */
     public function show($id)
     {
-        //
+      $employee = Employee::findOrFail($id);
+      $appointments = $employee->appointments;
+
+      return response()->json($appointments);
     }
 
     /**
@@ -82,23 +82,9 @@ class AppointmentStatusController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $apptId)
+    public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'appointment_id' => 'required',
-            'employee_id'    => 'required',
-            'status'         => 'required',
-        ]);
-
-        $status        = $request->input('status');
-
-        $appointmentEmp = AppointmentEmployee::where('appointment_id', $request->input('appointment_id'))
-                                            ->where('employee_id', $request->input('employee_id'))->first();
-
-        $appointmentEmp->status = $request->input('status');
-        $appointmentEmp->save();
-
-        return response()->json($appointmentEmp);
+        //
     }
 
     /**
