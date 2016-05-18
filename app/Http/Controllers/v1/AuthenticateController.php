@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\v1;
 
 use App\Models\Employee;
+use App\Models\Account;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -18,8 +19,28 @@ class AuthenticateController extends Controller
     public function __construct()
     {
         // Apply the jwt.auth middleware to all methods in this controller
-        // except for the authenticate method.
-        $this->middleware('jwt.auth', ['except' => ['authenticate']]);
+        // except for the authenticate method.s
+        $this->middleware('jwt.auth', ['except' => ['authenticate', 'register']]);
+    }
+
+    public function register(Request $request)
+    {
+        $employee = Employee::where('emp_num', $request->input('emp_num'))->get();
+        var_dump($employee->account);
+
+        if ($employee) {
+          $employee->account()->create([
+            'emp_num' => $request->input('emp_num'),
+            'password' => $request->input('password')
+          ]);
+          $employee->account()->save();
+        } else {
+          // throw an error;
+        }
+
+        return response()->json([
+          'token' => $this->jwtauth->fromUser($employee->account)
+        ]);
     }
 
     /**

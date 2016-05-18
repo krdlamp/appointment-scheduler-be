@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\AppointmentEmployee;
+use App\Models\Appointment;
 use App\Models\Employee;
 
 class PersonnelAppointmentsController extends Controller

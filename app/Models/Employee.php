@@ -31,6 +31,10 @@ class Employee extends Model implements AuthenticatableContract,
 
     protected $hidden = ['password', 'remember_token'];
 
+    public function account() {
+      return $this->hasOne('App\Models\Account');
+    }
+
     public function department() {
         return $this->belongsTo('App\Models\Department');
     }
