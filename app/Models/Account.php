@@ -16,8 +16,11 @@ class Account extends Model implements AuthenticatableContract,
 {
     use Authenticatable, Authorizable, CanResetPassword;
 
+    protected $table = 'accounts';
+
     protected $fillable = [
       'employee_id',
+      'emp_num',
       'password',
     ];
 

@@ -28,6 +28,7 @@ Route::group(['prefix' => 'api'], function () {
 
     Route::resource('/authenticate', 'v1\AuthenticateController',
         ['only' => ['index']]);
+    // Route::resource('/register', 'v1\RegisterController');
     Route::post('/register', 'v1\AuthenticateController@register');
     Route::post('/authenticate', 'v1\AuthenticateController@authenticate');
     Route::get('/authenticate/user', 'v1\AuthenticateController@getAuthenticatedUser');

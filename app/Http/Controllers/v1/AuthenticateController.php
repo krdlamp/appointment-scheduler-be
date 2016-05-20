@@ -25,21 +25,18 @@ class AuthenticateController extends Controller
 
     public function register(Request $request)
     {
-        $employee = Employee::where('emp_num', $request->input('emp_num'))->get();
-        var_dump($employee->account);
+        $employee = Employee::where('emp_num', $request->input('emp_num'))->firstOrFail();
 
         if ($employee) {
           $employee->account()->create([
             'emp_num' => $request->input('emp_num'),
-            'password' => $request->input('password')
+            'password' => bcrypt($request->input('password'))
           ]);
-          $employee->account()->save();
-        } else {
-          // throw an error;
         }
 
         return response()->json([
-          'token' => $this->jwtauth->fromUser($employee->account)
+          'token' => JWTAuth::fromUser($employee->account),
+          'user'  => $employee
         ]);
     }
 
@@ -83,7 +80,7 @@ class AuthenticateController extends Controller
             'department',
             'position',
             'level'
-        )->find($user->id);
+        )->find($user->employee_id);
 
         return response()->json(compact('user'));
     }
