@@ -15,8 +15,9 @@ class LevelsTableSeeder extends Seeder
         $levels = array(
             ['description' => 'Executive Level'],
             ['description' => 'Managerial Level'],
+            ['description' => 'Operational Level'],
         );
-        
+
         foreach ($levels as $level) {
             Level::create($level);
         }

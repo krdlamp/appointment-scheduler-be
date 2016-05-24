@@ -8,6 +8,8 @@ use App\Models\Employee;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
+use Mail;
+
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -81,6 +83,7 @@ class AppointmentsController extends Controller
             'status'      => $request->input('status'),
             'employee_id' => $request->input('set_by'),
             'venue'       => $request->input('venue'),
+            'notes'       => $request->input('notes'),
         ]);
 
         $appointment->save();
@@ -104,6 +107,14 @@ class AppointmentsController extends Controller
             'agendas',
             'employee'
         )->get();
+
+        foreach ($appointment->employees as $emp) {
+          Mail::send('emails.notification', ['appointment' => $appointment], function($m) use ($appointment, $emp) {
+            $m->from('mmfi.mst@gmail.com', 'Appointment Scheduler');
+
+            $m->to($emp->email, $emp->last_name)->subject($appointment->subject);
+          });
+        }
 
         return response()->json($appointment);
     }
@@ -170,6 +181,7 @@ class AppointmentsController extends Controller
         $appointment->status      = $request->input('status');
         $appointment->employee_id = $request->input('set_by');
         $appointment->venue       = $request->input('venue');
+        $appointment->notes       = $request->input('notes');
 
         $appointment->save();
 

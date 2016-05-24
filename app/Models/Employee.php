@@ -28,6 +28,7 @@ class Employee extends Model
         'department_id',
         'position_id',
         'level_id',
+        'email'
     ];
 
     // protected $hidden = ['password', 'remember_token'];

@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\v1;
 
 use App\Models\Employee;
+use App\Models\Account;
 use Illuminate\Http\Request;
+
+use App\Http\Controllers\v1\GuzzleHttp\Client;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -18,9 +21,18 @@ class EmployeesController extends Controller
         // Apply the jwt.auth middleware to all methods in this controller
         // except for the index and show methods.
 //        $this->middleware('jwt.auth', ['except' => ['index', 'show']]);
-        $this->middleware('jwt.auth');
+        $this->middleware('jwt.auth', ['except' => ['external']]);
     }
-    
+
+    public function external()
+    {
+      $client = new GuzzleHttp\Client();
+      $res = $client->request('GET', 'http://api.inventory.dev/api/employees');
+      echo $res->getStatusCode();
+      echo $res->getHeaderLine('content-type');
+      echo $res->getBody();
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -29,10 +41,11 @@ class EmployeesController extends Controller
     public function index()
     {
         $employees = Employee::with(
-            'department',
-            'position',
-            'level'
+          'department',
+          'position',
+          'level'
         )->get();
+
         return response()->json($employees);
     }
 

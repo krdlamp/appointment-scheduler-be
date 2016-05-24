@@ -11,7 +11,8 @@ class AppointmentEmployee extends Model
     protected $fillable = [
         'appointment_id',
         'employee_id',
-        'status'
+        'status',
+        'notes'
     ];
 
     public function appointments() {
