@@ -4,7 +4,10 @@ namespace App\Http\Controllers\v1;
 
 use App\Models\Appointment;
 use App\Models\AppointmentEmployee;
+use App\Models\Employee;
 use Illuminate\Http\Request;
+
+use Mail;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -93,9 +96,18 @@ class AppointmentStatusController extends Controller
         $appointmentEmp = AppointmentEmployee::where('appointment_id', $request->input('appointment_id'))
                                             ->where('employee_id', $request->input('employee_id'))->first();
 
+        $appointment = Appointment::findOrFail($request->input('appointment_id'));
+        $employee    = Employee::findOrFail($request->input('employee_id'));
+
         $appointmentEmp->status = $request->input('status');
         $appointmentEmp->notes  = $request->input('notes');
         $appointmentEmp->save();
+
+        Mail::send('emails.approvalNotif', ['appointment' => $appointment, 'appointmentEmp' => $appointmentEmp, 'employee' => $employee], function($m) use ($appointment) {
+          $m->from('mmfi.scheduler@gmail.com', 'MMFI Scheduler');
+          $m->subject($appointment->subject);
+          $m->to($appointment->employee->email);
+        });
 
         return response()->json($appointmentEmp);
     }

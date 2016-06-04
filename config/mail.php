@@ -54,7 +54,7 @@ return [
     |
     */
 
-    'from' => array('address' => 'mmfi.mst@gmail.com', 'name' => 'MMFI Appointment Scheduler'),
+    'from' => array('address' => 'mmfi.scheduler@gmail.com', 'name' => 'MMFI Scheduler'),
 
     /*
     |--------------------------------------------------------------------------
@@ -80,7 +80,7 @@ return [
     |
     */
 
-    'username' => env('MAIL_USERNAME', 'mmfi.mst@gmail.com'),
+    'username' => env('MAIL_USERNAME', 'mmfi.scheduler@gmail.com'),
 
     /*
     |--------------------------------------------------------------------------
@@ -93,7 +93,7 @@ return [
     |
     */
 
-    'password' => env('MAIL_PASSWORD', 'gjigpmqrcmylpuhj'),
+    'password' => env('MAIL_PASSWORD', 'mmfi.b0ss'),
 
     /*
     |--------------------------------------------------------------------------

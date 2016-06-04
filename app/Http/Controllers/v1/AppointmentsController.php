@@ -109,14 +109,17 @@ class AppointmentsController extends Controller
         )->get();
 
         foreach ($appointment->employees as $emp) {
-          Mail::send('emails.notification', ['appointment' => $appointment], function($m) use ($appointment, $emp) {
-            $m->from('mmfi.mst@gmail.com', 'Appointment Scheduler');
-
-            $m->to($emp->email, $emp->last_name)->subject($appointment->subject);
-          });
+          if ($emp->id !== $appointment->employee_id) {
+            Mail::send('emails.requestNotif', ['appointment' => $appointment], function($m) use ($appointment, $emp) {
+              $m->from('mmfi.scheduler@gmail.com', 'MMFI Scheduler');
+              $m->subject($appointment->subject);
+              $m->to($emp->email);
+            });
+          }
         }
 
         return response()->json($appointment);
+
     }
 
     /**
@@ -165,7 +168,6 @@ class AppointmentsController extends Controller
             'start_time' => 'required',
             'end_time'   => 'required',
             'purpose'    => 'required',
-            'status'     => 'required',
             'set_by'     => 'required',
             'venue'      => 'required',
 
@@ -210,6 +212,30 @@ class AppointmentsController extends Controller
             $appointment->agendas()->create([
                 'description' => $agd['description']
             ]);
+        }
+
+        if($appointment->status === 'Cancelled') {
+          foreach ($appointment->employees as $emp) {
+            if ($emp->id !== $appointment->employee_id) {
+              Mail::send('emails.cancelNotif', ['appointment' => $appointment], function($m) use ($appointment, $emp) {
+                $m->from('mmfi.scheduler@gmail.com', 'MMFI Scheduler');
+                $m->subject($appointment->subject);
+                $m->to($emp->email);
+              });
+            }
+          }
+        }
+
+        if($appointment->status === 'Re-scheduled') {
+          foreach ($appointment->employees as $emp) {
+            if ($emp->id !== $appointment->employee_id) {
+              Mail::send('emails.rescheduleNotif', ['appointment' => $appointment], function($m) use ($appointment, $emp) {
+                $m->from('mmfi.scheduler@gmail.com', 'MMFI Scheduler');
+                $m->subject($appointment->subject);
+                $m->to($emp->email);
+              });
+            }
+          }
         }
 
         $appointment->with(
