@@ -21,7 +21,7 @@ class EmployeesController extends Controller
         // Apply the jwt.auth middleware to all methods in this controller
         // except for the index and show methods.
 //        $this->middleware('jwt.auth', ['except' => ['index', 'show']]);
-        $this->middleware('jwt.auth', ['except' => ['external']]);
+        // $this->middleware('jwt.auth', ['except' => ['external']]);
     }
 
     public function external()
@@ -67,7 +67,25 @@ class EmployeesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+          'emp_num'       => 'required',
+          'first_name'    => 'required',
+          'last_name'     => 'required',
+          'department_id' => 'required',
+          'position_id'   => 'required',
+          'level_id'       => 'required',
+        ]);
+
+        $input = $request->all();
+        $employee = new Employee();
+        $employee->fill($input)->save();
+        $employee = Employee::with(
+          'department',
+          'level',
+          'position'
+        )->findOrFail($employee->id);
+
+        return response()->json($employee);
     }
 
     /**
@@ -78,7 +96,13 @@ class EmployeesController extends Controller
      */
     public function show($id)
     {
-        //
+        $employee = Employee::with(
+          'department',
+          'level',
+          'position'
+        )->findOrFail($id);
+
+        return response()->json($employee);
     }
 
     /**
@@ -101,7 +125,26 @@ class EmployeesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $employee = Employee::findOrFail($id);
+
+      $this->validate($request, [
+        'emp_num'       => 'required',
+        'first_name'    => 'required',
+        'last_name'     => 'required',
+        'department_id' => 'required',
+        'position_id'   => 'required',
+        'level_id'       => 'required',
+      ]);
+
+      $input = $request->all();
+      $employee->fill($input)->save();
+      $employee = Employee::with(
+        'department',
+        'level',
+        'position'
+      )->findOrFail($id);
+
+      return response()->json($employee);
     }
 
     /**
@@ -112,6 +155,8 @@ class EmployeesController extends Controller
      */
     public function destroy($id)
     {
-        //
+      Employee::destroy($id);
+
+      return response()->json([], 204);
     }
 }
