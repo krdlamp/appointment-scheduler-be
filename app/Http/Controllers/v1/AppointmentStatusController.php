@@ -101,13 +101,22 @@ class AppointmentStatusController extends Controller
 
         $appointmentEmp->status = $request->input('status');
         $appointmentEmp->notes  = $request->input('notes');
+        $appointmentEmp->reason = $request->input('reason');
         $appointmentEmp->save();
 
-        Mail::send('emails.approvalNotif', ['appointment' => $appointment, 'appointmentEmp' => $appointmentEmp, 'employee' => $employee], function($m) use ($appointment) {
-          $m->from('mmfi.scheduler@gmail.com', 'MMFI Scheduler');
-          $m->subject($appointment->subject);
-          $m->to($appointment->employee->email);
-        });
+        if($appointmentEmp->status === 'Attendance Confirmed') {
+          Mail::send('emails.approvalNotif', ['appointment' => $appointment, 'appointmentEmp' => $appointmentEmp, 'employee' => $employee], function($m) use ($appointment) {
+            $m->from('mmfi.scheduler@gmail.com', 'MMFI Scheduler');
+            $m->subject($appointment->subject);
+            $m->to($appointment->employee->email);
+          });
+        } else if($appointmentEmp->status === 'Attendance Cancelled') {
+          Mail::send('emails.cancelApprovalNotif', ['appointment' => $appointment, 'appointmentEmp' => $appointmentEmp, 'employee' => $employee], function($m) use ($appointment) {
+            $m->from('mmfi.scheduler@gmail.com', 'MMFI Scheduler');
+            $m->subject($appointment->subject);
+            $m->to($appointment->employee->email);
+          });
+        }
 
         return response()->json($appointmentEmp);
     }

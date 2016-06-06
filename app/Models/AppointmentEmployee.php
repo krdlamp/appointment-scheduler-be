@@ -12,7 +12,8 @@ class AppointmentEmployee extends Model
         'appointment_id',
         'employee_id',
         'status',
-        'notes'
+        'notes',
+        'reason',
     ];
 
     public function appointments() {

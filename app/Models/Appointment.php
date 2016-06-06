@@ -15,7 +15,8 @@ class Appointment extends Model
         'status',
         'employee_id',
         'venue',
-        'notes'
+        'notes',
+        'reason',
     ];
 
     public function employees() {

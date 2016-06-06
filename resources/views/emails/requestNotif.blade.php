@@ -1,20 +1,6 @@
 <!DOCTYPE html>
 <html>
     <body>
-      <!-- <p><b>Date:</b> {{ $appointment->set_date }}</p>
-      <p><b>Time:</b> {{ $appointment->start_time }} - {{ $appointment->end_time }}</p>
-      <p><b>Venue:</b> {{ $appointment->venue }}</p>
-      <p><b>Set by:</b> {{ $appointment->employee->first_name }} {{ $appointment->employee->last_name }}</p>
-      <p><b>Status:</b> {{ $appointment->status }}</p>
-
-      <p>Click <a href="http://localhost:9000/#/scheduler/appointment/{{$appointment->id}}/details">here</a> to confirm attendance.</p>
-
-      <p><b>Meeting Employees</b></p>
-      <ul class="list-group">
-        @foreach($appointment->employees as $emp)
-          <li class="list-group-item">{{ $emp->first_name }} {{ $emp->last_name }}</li>
-        @endforeach
-      </ul> -->
       <p style="font-size:20px;text-transform:uppercase;"><b>APPOINTMENT SCHEDULER<b></p>
       <hr>
       <p>

@@ -184,6 +184,7 @@ class AppointmentsController extends Controller
         $appointment->employee_id = $request->input('set_by');
         $appointment->venue       = $request->input('venue');
         $appointment->notes       = $request->input('notes');
+        $appointment->reason      = $request->input('reason');
 
         $appointment->save();
 
