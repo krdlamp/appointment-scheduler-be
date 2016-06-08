@@ -9,6 +9,7 @@
         <span style="">{{$appointment->set_date}}</span> at
         <span style="">{{$appointment->start_time}} - {{$appointment->end_time}}</span>
       </p>
+      <p><b>Reason: </b> {{$appointment->reason}}</p>
       <hr>
       <table cellspacing="10" align="center" style="width:70%">
         <tr><th colspan="2" style="text-transform:uppercase;font-size:18px;text-align:center;">Appointment Details</th></tr>
