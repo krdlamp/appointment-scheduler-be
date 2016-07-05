@@ -9,6 +9,10 @@ class Level extends Model
     protected $fillable = [
         'description',
     ];
+
+    protected $casts = [
+    	'id' => 'integer'
+    ];
     
     public function employees() {
         return $this->hasMany('App\Models\Employee');

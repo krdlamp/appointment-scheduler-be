@@ -9,6 +9,10 @@ class Position extends Model
     protected $fillable = [
         'title',
     ];
+
+    protected $casts = [
+    	'id' => 'integer'
+    ];
     
     public function employees() {
         return $this->hasMany('App\Models\Employee');

@@ -19,6 +19,11 @@ class Appointment extends Model
         'reason',
     ];
 
+    protected $casts = [
+        'id'          => 'integer',
+        'employee_id' => 'integer',
+    ];
+
     public function employees() {
         return $this->belongsToMany('App\Models\Employee')->withPivot('status');
     }

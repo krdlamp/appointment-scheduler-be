@@ -9,6 +9,10 @@ class Department extends Model
     protected $fillable = [
         'name',
     ];
+
+    protected $casts = [
+    	'id' => 'integer'
+    ];
     
     public function employees() {
         return $this->hasMany('App\Models\Employee');

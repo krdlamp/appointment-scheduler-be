@@ -29,6 +29,11 @@ class Account extends Model implements AuthenticatableContract,
       'remember_token'
     ];
 
+    protected $casts = [
+      'id'          => 'integer',
+      'employee_id' => 'integer'
+    ];
+
     public function employee() {
       return $this->belongsTo('App\Models\Employee');
     }

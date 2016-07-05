@@ -11,6 +11,11 @@ class Agenda extends Model
         'appointment_id',
     ];
 
+    protected $casts = [
+    	'id'			 => 'integer',
+    	'appointment_id' => 'integer'
+    ];
+
     public function appointment() {
         return $this->belongsTo('App\Models\Appointment');
     }

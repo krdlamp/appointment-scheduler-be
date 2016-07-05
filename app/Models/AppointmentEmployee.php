@@ -16,6 +16,12 @@ class AppointmentEmployee extends Model
         'reason',
     ];
 
+    protected $casts = [
+        'id'             => 'integer',
+        'appointment_id' => 'integer',
+        'employee_id'    => 'integer'
+    ];
+
     public function appointments() {
       return $this->hasMany('App\Models\Appointments');
     }

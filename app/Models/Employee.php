@@ -31,6 +31,13 @@ class Employee extends Model
         'email'
     ];
 
+    protected $casts = [
+        'id'            => 'integer',
+        'department_id' => 'integer',
+        'position_id'   => 'integer',
+        'level_id'      => 'integer'
+    ];
+
     // protected $hidden = ['password', 'remember_token'];
 
     public function account() {
