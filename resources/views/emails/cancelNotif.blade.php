@@ -50,6 +50,6 @@
           </td>
         </tr>
       </table>
-      <p>Click <a href="http://localhost:9000/#/scheduler/appointment/{{$appointment->id}}/details">here</a> for more details.</p>
+      <p>Click <a href="http://appointment-scheduler.dev/#/scheduler/appointment/{{$appointment->id}}/details">here</a> for more details.</p>
     </body>
 </html>

@@ -49,6 +49,6 @@
           </td>
         </tr>
       </table>
-      <p>Click <a href="http://localhost:9000/#/scheduler/appointment/{{$appointment->id}}/details">here</a> to confirm attendance.</p>
+      <p>Click <a href="http://appointment-scheduler.dev/#/scheduler/appointment/{{$appointment->id}}/details">here</a> to confirm attendance.</p>
     </body>
 </html>
