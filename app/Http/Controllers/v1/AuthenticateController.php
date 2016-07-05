@@ -13,15 +13,6 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 
 class AuthenticateController extends Controller
 {
-    /**
-     * AuthenticateController constructor.
-     */
-    public function __construct()
-    {
-        // Apply the jwt.auth middleware to all methods in this controller
-        // except for the authenticate method.s
-        $this->middleware('jwt.auth', ['except' => ['authenticate', 'register']]);
-    }
 
     public function register(Request $request)
     {
