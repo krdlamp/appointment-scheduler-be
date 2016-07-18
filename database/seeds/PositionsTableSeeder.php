@@ -61,7 +61,7 @@ class PositionsTableSeeder extends Seeder
             ['title' => 'Guidance Facilitator'],
             ['title' => 'Sports Coordinator'],
             ['title' => 'Coach'],
-            ['title' => 'Assitant Coach'],
+            ['title' => 'Assistant Coach'],
             ['title' => 'Trainers'],
             ['title' => 'Internal Auditor'],
         );

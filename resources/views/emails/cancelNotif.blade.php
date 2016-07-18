@@ -6,8 +6,8 @@
       <p>
         <span style="text-transform:uppercase;">{{$appointment->employee->first_name}} {{$appointment->employee->last_name}}</span>
         <span style="">cancelled the appointment scheduled on</span>
-        <span style="">{{$appointment->set_date}}</span> at
-        <span style="">{{$appointment->start_time}} - {{$appointment->end_time}}</span>
+        <span style="">{{ date('F d, Y', strtotime($appointment->set_date))}}</span> at
+        <span style="">{{date('H:i', strtotime($appointment->start_time))}} - {{date('H:i', strtotime($appointment->end_time))}}. Click <a href="http://appointment-scheduler.dev/#/scheduler/appointment/{{$appointment->id}}/details">here</a> for more details.</span>
       </p>
       <p><b>Reason: </b> {{$appointment->reason}}</p>
       <hr>
@@ -50,6 +50,6 @@
           </td>
         </tr>
       </table>
-      <p>Click <a href="http://appointment-scheduler.dev/#/scheduler/appointment/{{$appointment->id}}/details">here</a> for more details.</p>
+      <p></p>
     </body>
 </html>
